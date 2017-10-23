@@ -1,0 +1,156 @@
+﻿@model Test.Models.RegisterViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-inline", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="row">
+                <div class="span8 offset5 aui-page-panel">
+
+                    <div>
+                        <h2>Sign Up</h2>
+                    </div>
+                    <fieldset style="margin-bottom: 40px;">
+                        <legend style="border-bottom: 1px solid gray;
+                                font-size: 16px;">Basic Information</legend>
+                        <table width="100%" border="0"
+                               cellspacing="0" cellpadding="0">
+                            <tr id="tr_basic">
+                                <td style="vertical-align: top;" width>
+                                    <div id="basicinfo"
+                                         style="width: 100%">
+                                        <div style="height: auto !important;
+                                	overflow-y: visible;">
+                                            <table cellpadding="3">
+
+                                                <tbody>
+                                                    <tr>
+                                                        <td width="150">
+                                                            @Html.LabelFor(model => model.FirstName, new { @class = "sr-only" })
+                                                        </td>
+                                                        <td>
+                                                            @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control input-sm" })
+                                                            @Html.ValidationMessageFor(model => model.FirstName)
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            @Html.LabelFor(model => model.LastName)
+                                                        </td>
+                                                        <td>
+                                                            @Html.TextBoxFor(model => model.LastName, new { @class = "input-xsmall" })
+                                                            @Html.ValidationMessageFor(model => model.LastName)
+                                                        </td>
+                                                    </tr>
+                                                    @*<tr>
+                                                            <td>
+                                                                @Html.LabelFor(model => model.Email)
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(model => model.Email,
+                                                                new { @class = "required" })
+                                                                @Html.ValidationMessageFor
+                                                                    (model => model.Email)
+                                                            </td>
+                                                        </tr>*@
+
+                                                    <tr></tr>
+
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                        <legend style="border-bottom: 1px solid gray;
+                font-size: 16px;">Account Information</legend>
+                        <table cellpadding="5">
+                            <tr>
+                                <td width="150">
+                                    @Html.LabelFor(model => model.UserName)
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.UserName)
+                                    @Html.ValidationMessageFor(model => model.UserName)
+                                </td>
+                                <td id="tdValidate">
+                                    <img id="imgValidating" src="@Url.Content(" ~/Images/validating.gif")"
+                                         style="display:none;" />
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.Password)
+                                </td>
+                                <td>
+                                    @Html.PasswordFor(model => model.Password)
+                                    @Html.ValidationMessageFor(model => model.Password)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(m => m.ConfirmPassword,
+                            new { @class = "control-label" })
+                                </td>
+
+                                <td>
+                                    @Html.PasswordFor(model => model.ConfirmPassword)
+                                    @Html.ValidationMessageFor(model => model.ConfirmPassword)
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(m => m.Email,
+                            new { @class = "control-label" })
+                                </td>
+
+                                <td>
+                                    @Html.TextBoxFor(model => model.Email)
+                                    @Html.ValidationMessageFor(model => model.Email)
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>
+                                        <div class="control-group">
+                                            <div class="controls">
+                                                <input id="btnRegister"
+                                                       type="submit"
+                                                       class="btn btn-primary"
+                                                       value="Register" />
+                                            </div>
+                                        </div>
+
+                                    </p>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+
+                    </fieldset>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>
